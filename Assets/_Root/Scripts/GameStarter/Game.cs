@@ -28,10 +28,10 @@ internal sealed class Game
         WinGameController winGameController = new WinGameController();
         cardManager.OnCardsCountChanged.AddHandler(winGameController.OnCardsCountChanged);
 
-        PauseController pauseController = new PauseController();
-        _updateController.Add(pauseController);
-        OnStartGame.AddHandler(pauseController.Enable);
-        winGameController.OnWinGame.AddHandler(pauseController.OnWinGame);
+        PauseManager pauseManager = new PauseManager();
+        _updateController.Add(pauseManager);
+        OnStartGame.AddHandler(pauseManager.Enable);
+        winGameController.OnWinGame.AddHandler(pauseManager.OnWinGame);
 
         WinGameUIInstantiator winGameUIInstantiator = new WinGameUIInstantiator();
         winGameController.OnWinGame.AddHandler(winGameUIInstantiator.Instantiate);
@@ -40,7 +40,7 @@ internal sealed class Game
         _updateController.Add(mouseClickController);
         cardManager.BeforeCardsPrevievStart.AddHandler(mouseClickController.Disable);
         cardManager.AfterCardsPrevievComplete.AddHandler(mouseClickController.Enable);
-        pauseController.OnPauseChanged.AddHandler(mouseClickController.OnPauseChanged);
+        pauseManager.OnPauseChanged.AddHandler(mouseClickController.OnPauseChanged);
 
         StopWatchController stopWatchController = new StopWatchController();
         _updateController.Add(stopWatchController);
@@ -50,7 +50,7 @@ internal sealed class Game
         winGameController.OnWinGame.AddHandler(stopWatchController.Stop);
 
         PauseMenu pauseMenu = new PauseMenu();
-        pauseController.OnPauseChanged.AddHandler(pauseMenu.OnPauseChanged);
+        pauseManager.OnPauseChanged.AddHandler(pauseMenu.OnPauseChanged);
 
         OnStartGame.Handle();
     }

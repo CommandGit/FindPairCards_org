@@ -1,42 +1,18 @@
-using UnityEngine;
 
-internal sealed class PauseController : BaseEnabled, IUpdate
+internal sealed class PauseController
 {
-    public EventHandler<bool> OnPauseChanged;
+    public EventHandler<bool> OnChanged = new EventHandler<bool>();
 
-    private bool _isGamePaused;
-    private PauseKeyController _pauseKeyController;
+    private bool _value = false;
 
-    public PauseController() : base()
+    public void Set(bool newValue)
     {
-        OnPauseChanged = new EventHandler<bool>();
-        _isGamePaused = false;
-
-        _pauseKeyController = new PauseKeyController();
-        _pauseKeyController.OnKeyPressed.AddHandler(OnPauseKeyPressed);
+        _value = newValue;
+        OnChanged.Handle(_value);
     }
 
-    private void OnPauseKeyPressed()
+    public void Change()
     {
-        ChangePause(!_isGamePaused);
-    }
-
-    public void Update(float deltaTime)
-    {
-        if (!_enable) return;
-
-        _pauseKeyController.Update();
-    }
-
-    public void OnWinGame()
-    {
-        ChangePause(false);
-        _enable = false;
-    }
-
-    private void ChangePause(bool newPauseValue)
-    {
-        _isGamePaused = newPauseValue;
-        OnPauseChanged.Handle(_isGamePaused);
+        Set(!_value);
     }
 }
