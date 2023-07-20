@@ -10,7 +10,7 @@ namespace StopWatch
         private const string OVERLOAD_TEXT = "59:59.999";
         //private const string TIME_FORMAT = "mm\\:ss\\.fff";
         private const string TIME_FORMAT = "mm\\:ss";
-        private const string PREFAB_PATH = "StopWatchCanvas";
+        private const string PREFAB_PATH = "Prefabs/UI/StopWatchCanvas";
 
         private GameObject _prefab;
 

@@ -10,7 +10,7 @@ internal sealed class TableMainController
     private ZonePosition _tableZonePosition;
     public TableMainController()
     {
-        _prefab = Resources.Load<GameObject>("Table");
+        _prefab = Resources.Load<GameObject>("Prefabs/PlayingGameObjects/Table");
         _tableZonePosition = null;
     }
 

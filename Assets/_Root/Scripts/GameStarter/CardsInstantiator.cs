@@ -11,7 +11,7 @@ internal sealed class CardsInstantiator
 
     public CardsInstantiator(CardsInfo cardsInfo, UpdateController updateController)
     {
-        _prefab = Resources.Load<GameObject>("Card");
+        _prefab = Resources.Load<GameObject>("Prefabs/PlayingGameObjects/Card");
         _cardsInfo = cardsInfo;
         OnCardInstantiated = new EventHandler<Card, CardView>();
         _updateController = updateController;

@@ -1,18 +1,22 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
-
-public class Menu : MonoBehaviour
+internal sealed class Menu 
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
+    private UpdateController _updateController;
 
-    // Update is called once per frame
-    void Update()
+    public void Start()
     {
-        
+        _updateController = new UpdateController();
+        EventHandler OnStartGame = new EventHandler();
+
+        MainMenuController mainMenuController = new MainMenuController();
+        OnStartGame.AddHandler(mainMenuController.OnStartGame);
+        OnStartGame.Handle();
+
+    }
+    public void Update(float deltaTime)
+    {
+        _updateController.Update(deltaTime);
     }
 }

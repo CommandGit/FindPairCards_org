@@ -4,15 +4,15 @@ using UnityEngine;
 
 internal sealed class MenuStarter : MonoBehaviour
 {
-    private 
-    void Start()
+    private Menu _menu;
+   private void Start()
     {
-        
+        _menu = new Menu();
+        _menu.Start();
+    }
+    private void Update()
+    {
+        _menu.Update(Time.deltaTime);
     }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
 }
