@@ -14,7 +14,7 @@ internal sealed class PauseUIController : BaseEnabled, IUpdate
         OnPauseChanged = new EventHandler<bool>();
         _isGamePaused = false;
         _pauseUIGameObject = null;
-        _pauseUIPrefab = Resources.Load<GameObject>("PauseGameCanvas");
+        _pauseUIPrefab = Resources.Load<GameObject>("Prefabs/UI/PauseGameCanvas");
     }
 
     public void Update(float deltaTime)

@@ -12,6 +12,8 @@ internal sealed class Menu
 
         MainMenuController mainMenuController = new MainMenuController();
         OnStartGame.AddHandler(mainMenuController.OnStartGame);
+
+
         OnStartGame.Handle();
 
     }
