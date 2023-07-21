@@ -2,9 +2,9 @@ using UnityEngine;
 
 internal class BasePrefabInstantiator
 {
-    private bool _isShown = false;
+    protected bool _isShown = false;
     private GameObject _prefab;
-    private GameObject _gameObject;
+    protected GameObject _gameObject;
 
     public BasePrefabInstantiator(string prefabName)
     {
@@ -16,7 +16,7 @@ internal class BasePrefabInstantiator
         _prefab = prefab;
     }
 
-    public void Show()
+    public virtual void Show()
     {
         if (_isShown) return;
 
@@ -24,11 +24,12 @@ internal class BasePrefabInstantiator
         _isShown = true;
     }
 
-    public void Hide()
+    public virtual void Hide()
     {
         if (!_isShown) return;
 
         GameObject.Destroy(_gameObject);
         _isShown = false;
+        _gameObject = null;
     }
 }
