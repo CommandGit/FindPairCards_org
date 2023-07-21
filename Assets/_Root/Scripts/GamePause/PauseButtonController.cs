@@ -32,16 +32,4 @@ internal sealed class PauseButtonController : BasePrefabInstantiator
     {
         OnButtonClicked.Handle();
     }
-
-    public void OnPauseChanged(bool pauseValue)
-    {
-        if (pauseValue)
-        {
-            Hide();
-        }
-        else
-        {
-            Show();
-        }
-    }
 }

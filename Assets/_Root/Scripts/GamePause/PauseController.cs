@@ -1,14 +1,23 @@
 
 internal sealed class PauseController
 {
-    public EventHandler<bool> OnChanged = new EventHandler<bool>();
+    public EventHandler OnPauseEnable = new EventHandler();
+    public EventHandler OnPauseDisable = new EventHandler();
 
     private bool _value = false;
 
     public void Set(bool newValue)
     {
         _value = newValue;
-        OnChanged.Handle(_value);
+
+        if (_value)
+        {
+            OnPauseEnable.Handle();
+        }
+        else
+        {
+            OnPauseDisable.Handle();
+        }
     }
 
     public void Change()

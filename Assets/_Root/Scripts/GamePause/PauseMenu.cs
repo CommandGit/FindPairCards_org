@@ -5,12 +5,4 @@ internal sealed class PauseMenu : BasePrefabInstantiator
     {
 
     }
-
-    public void OnPauseChanged(bool pauseValue)
-    {
-        if (pauseValue)
-            Show();
-        else
-            Hide();
-    }
 }

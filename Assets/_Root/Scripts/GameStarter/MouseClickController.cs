@@ -17,9 +17,4 @@ internal sealed class MouseClickController : BaseEnabled, IUpdate
             }
         }
     }
-
-    public void OnPauseChanged(bool pauseValue)
-    {
-        _enable = !pauseValue;
-    }
 }
