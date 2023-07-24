@@ -4,7 +4,7 @@ using UnityEngine;
 
 namespace StopWatch
 {
-    internal sealed class StopWatchController : IUpdate
+    internal sealed class StopWatchController : BaseEnabled, IUpdate
     {
         private const float OVERLOAD_TIME = 3600f; // 60 min
         private const string OVERLOAD_TEXT = "59:59.999";
@@ -42,6 +42,7 @@ namespace StopWatch
 
         public void Update(float deltaTime)
         {
+            if (!_enable) return;
             if (!_model.IsEnable) return;
             _model.Time += deltaTime;
             if (_isShow) UpdateView();
