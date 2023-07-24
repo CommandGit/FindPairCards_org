@@ -11,7 +11,10 @@ internal sealed class Menu
         EventHandler OnStartGame = new EventHandler();
 
         MainMenuController mainMenuController = new MainMenuController();
-        _updateController.Add(mainMenuController);
+        
+        //not need
+        //_updateController.Add(mainMenuController);
+        
         OnStartGame.AddHandler(mainMenuController.OnStartGame);
 
 

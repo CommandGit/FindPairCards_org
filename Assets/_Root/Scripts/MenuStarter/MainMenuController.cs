@@ -18,13 +18,23 @@ internal sealed class MainMenuController : IUpdate
 
     public void Update(float deltaTime)
     {
-        _mainMenuView.newGameButton.onClick.AddListener(StartNewGame);
+        //to 35
+        //_mainMenuView.newGameButton.onClick.AddListener(StartNewGame);
     }
 
     private void Show()
     {
-        _mainMenuPrefab = GameObject.Instantiate(_mainMenuPrefab);
-        _mainMenuView = _mainMenuPrefab.GetComponent<MainMenuView>();
+        //_mainMenuPrefab = GameObject.Instantiate(_mainMenuPrefab);
+        GameObject go = GameObject.Instantiate(_mainMenuPrefab);
+
+
+        //_mainMenuView = _mainMenuPrefab.GetComponent<MainMenuView>();
+        _mainMenuView = go.GetComponent<MainMenuView>();
+
+        //from 22
+        _mainMenuView.newGameButton.onClick.AddListener(StartNewGame);
+
+        Debug.Log("111");
 
     }
     private void StartNewGame()
