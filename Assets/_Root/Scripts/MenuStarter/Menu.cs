@@ -12,13 +12,12 @@ internal sealed class Menu
 
         MainMenuController mainMenuController = new MainMenuController();
         
-        //not need
-        //_updateController.Add(mainMenuController);
         
         OnStartGame.AddHandler(mainMenuController.OnStartGame);
 
 
-
+        SettingsPanelController settingsPanelController = new SettingsPanelController();
+        OnStartGame.AddHandler(settingsPanelController.OnStartController);
         OnStartGame.Handle();
 
     }
