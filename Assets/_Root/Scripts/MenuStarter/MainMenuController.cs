@@ -33,9 +33,6 @@ internal sealed class MainMenuController : IUpdate
 
         //from 22
         _mainMenuView.newGameButton.onClick.AddListener(StartNewGame);
-
-        Debug.Log("111");
-
     }
     private void StartNewGame()
     {
