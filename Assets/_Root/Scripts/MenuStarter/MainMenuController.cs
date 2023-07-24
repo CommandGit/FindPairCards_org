@@ -14,18 +14,18 @@ internal sealed class MainMenuController : IUpdate
     public void OnStartGame()
     {
         Show();
+        _mainMenuView.newGameButton.onClick.AddListener(StartNewGame);
+
     }
 
     public void Update(float deltaTime)
     {
-        _mainMenuView.newGameButton.onClick.AddListener(StartNewGame);
     }
 
     private void Show()
     {
         _mainMenuPrefab = GameObject.Instantiate(_mainMenuPrefab);
         _mainMenuView = _mainMenuPrefab.GetComponent<MainMenuView>();
-
     }
     private void StartNewGame()
     {
