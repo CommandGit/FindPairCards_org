@@ -17,24 +17,23 @@ internal sealed class SettingsPanelController : BaseEnabled, IUpdate
         if (_settingsPanelView == null)
         {
 
-        GameObject go = GameObject.Instantiate(_settingsPanelPrefab);
-        _settingsPanelView = go.GetComponent<SettingsPanelView>();
+            GameObject go = GameObject.Instantiate(_settingsPanelPrefab);
+            _settingsPanelView = go.GetComponent<SettingsPanelView>();
+            _settingsPanelView.closeSettingsPanelButton.onClick.AddListener(ClosePanel);
         }
     }
     public void OnStartGame()
     {
-        _settingsPanelModelSettings.IsEnable = false;
-        if (_settingsPanelView != null)
-        {
-            _settingsPanelView.closeSettingsPanelButton.onClick.AddListener(ClosePanel);
-        }
+        //if (_settingsPanelView != null)
+        //{
+        //}
     }
     public void Update(float deltaTime)
     {
         if (!_settingsPanelModelSettings.IsEnable) return;
         if (_settingsPanelModelSettings.IsEnable == true)
         {
-            ShowSettings();   
+            ShowSettings();
         }
 
     }
@@ -45,6 +44,7 @@ internal sealed class SettingsPanelController : BaseEnabled, IUpdate
             if (_settingsPanelModelSettings.IsEnable == true)
             {
                 _settingsPanelModelSettings.IsEnable = false;
+                GameObject.Destroy(_settingsPanelView.gameObject);
             }
         }
     }
