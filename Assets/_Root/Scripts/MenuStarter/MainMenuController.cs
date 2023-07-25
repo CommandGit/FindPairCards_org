@@ -2,18 +2,17 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-internal sealed class MainMenuController
+internal sealed class MainMenuController:BaseEnabled
 {
     private GameObject _mainMenuPrefab;
     private GameObject _settingsPanelPrefab;
     private MainMenuView _mainMenuView;
     private SettingsPanelView _settingsPanelView;
-    private SettingsPanelModel _settingsPanelModel;
+    private SettingsPanelModelSettings _settingsPanelModelSettings;
     public MainMenuController()
     {
         _mainMenuPrefab = Resources.Load<GameObject>("Prefabs/UI/Menu");
-        _settingsPanelModel = new SettingsPanelModel();
-        // _settingsPanelPrefab = Resources.Load<GameObject>("Prefabs/UI/SettingsPanel");
+        _settingsPanelModelSettings = Resources.Load<SettingsPanelModelSettings>("ScriptableObject/SettingsPanelModelSettings");
     }
     public void OnStartGame()
     {
@@ -34,8 +33,7 @@ internal sealed class MainMenuController
     }
     private void ShowSettingsEnabled()
     {
-        _settingsPanelModel.IsEnable = true;
-        Debug.Log(_settingsPanelModel.IsEnable);
+        _settingsPanelModelSettings.IsEnable = true;
     }
     private void ShowThemePanelEnabled()
     {

@@ -3,48 +3,49 @@ using UnityEngine;
 internal sealed class SettingsPanelController : BaseEnabled, IUpdate
 {
     private SettingsPanelView _settingsPanelView;
-    private SettingsPanelModel _settingsPanelModel;
     private GameObject _settingsPanelPrefab;
-
+    private SettingsPanelModelSettings _settingsPanelModelSettings;
 
     public SettingsPanelController()
     {
-        _settingsPanelModel = new SettingsPanelModel();   
+        _settingsPanelModelSettings = _settingsPanelModelSettings = Resources.Load<SettingsPanelModelSettings>("ScriptableObject/SettingsPanelModelSettings");
         _settingsPanelPrefab = Resources.Load<GameObject>("Prefabs/UI/SettingsPanel");
         _settingsPanelView = GameObject.FindObjectOfType<SettingsPanelView>();
     }
     private void ShowSettings()
     {
+        if (_settingsPanelView == null)
+        {
+
         GameObject go = GameObject.Instantiate(_settingsPanelPrefab);
         _settingsPanelView = go.GetComponent<SettingsPanelView>();
-        Debug.Log("ShowSettings");
-    }
-
-    public void OnStartGame()
-    {
-       // Hide();
-        //_settingsPanelView.closeSettingsPanelButton.onClick.AddListener(ClosePanel);
-    }
-    public void Hide()
-    {
-        _settingsPanelModel.IsEnable = false;
-
-        Debug.Log("hide is hiding");
-    }
-
-    public void Update(float deltaTime)
-    {
-        if (!_enable) return;
-        if (!_settingsPanelModel.IsEnable) return;
-        if (_settingsPanelModel.IsEnable == true)
-        {
-            Debug.Log("set panel updateing");
-            ShowSettings();
         }
     }
+    public void OnStartGame()
+    {
+        _settingsPanelModelSettings.IsEnable = false;
+        if (_settingsPanelView != null)
+        {
+            _settingsPanelView.closeSettingsPanelButton.onClick.AddListener(ClosePanel);
+        }
+    }
+    public void Update(float deltaTime)
+    {
+        if (!_settingsPanelModelSettings.IsEnable) return;
+        if (_settingsPanelModelSettings.IsEnable == true)
+        {
+            ShowSettings();   
+        }
 
+    }
     private void ClosePanel()
     {
-        _settingsPanelView.settingsPanelObject.SetActive(false);
+        if (_settingsPanelView != null)
+        {
+            if (_settingsPanelModelSettings.IsEnable == true)
+            {
+                _settingsPanelModelSettings.IsEnable = false;
+            }
+        }
     }
 }
