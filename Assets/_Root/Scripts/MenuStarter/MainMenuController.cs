@@ -27,7 +27,6 @@ internal sealed class MainMenuController
     {
         GameObject go = GameObject.Instantiate(_mainMenuPrefab);
         _mainMenuView = go.GetComponent<MainMenuView>();
-
     }
     private void StartNewGame()
     {
@@ -42,7 +41,6 @@ internal sealed class MainMenuController
     {
         Debug.Log("ShowThemePanelEnabled");
     }
-
     private void ExitApplication()
     {
         Application.Quit();
