@@ -4,6 +4,8 @@ using UnityEngine.SceneManagement;
 
 internal sealed class MainMenuController:BaseEnabled
 {
+    public EventHandler OnSettingPressed = new EventHandler();
+
     private GameObject _mainMenuPrefab;
     private GameObject _settingsPanelPrefab;
     private MainMenuView _mainMenuView;
@@ -33,7 +35,8 @@ internal sealed class MainMenuController:BaseEnabled
     }
     private void ShowSettingsEnabled()
     {
-        _settingsPanelModelSettings.IsEnable = true;
+        //_settingsPanelModelSettings.IsEnable = true;
+        OnSettingPressed.Handle();
     }
     private void ShowThemePanelEnabled()
     {

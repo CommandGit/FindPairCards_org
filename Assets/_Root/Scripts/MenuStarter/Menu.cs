@@ -15,8 +15,9 @@ internal sealed class Menu
         OnStartGame.AddHandler(mainMenuController.OnStartGame);
 
         SettingsPanelController settingsPanelController = new SettingsPanelController();
-        _updateController.Add(settingsPanelController);
-        OnStartGame.AddHandler(settingsPanelController.OnStartGame);
+        //_updateController.Add(settingsPanelController);
+        //OnStartGame.AddHandler(settingsPanelController.OnStartGame);
+        mainMenuController.OnSettingPressed.AddHandler(settingsPanelController.ShowSettings);
 
 
         OnStartGame.Handle();

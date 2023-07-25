@@ -12,7 +12,7 @@ internal sealed class SettingsPanelController : BaseEnabled, IUpdate
         _settingsPanelPrefab = Resources.Load<GameObject>("Prefabs/UI/SettingsPanel");
         _settingsPanelView = GameObject.FindObjectOfType<SettingsPanelView>();
     }
-    private void ShowSettings()
+    public void ShowSettings()
     {
         if (_settingsPanelView == null)
         {
@@ -39,13 +39,14 @@ internal sealed class SettingsPanelController : BaseEnabled, IUpdate
     }
     private void ClosePanel()
     {
-        if (_settingsPanelView != null)
-        {
-            if (_settingsPanelModelSettings.IsEnable == true)
-            {
-                _settingsPanelModelSettings.IsEnable = false;
-                GameObject.Destroy(_settingsPanelView.gameObject);
-            }
-        }
+        //if (_settingsPanelView != null)
+        //{
+        //    if (_settingsPanelModelSettings.IsEnable == true)
+        //    {
+        //        _settingsPanelModelSettings.IsEnable = false;
+        //        GameObject.Destroy(_settingsPanelView.gameObject);
+        //    }
+        //}
+        GameObject.Destroy(_settingsPanelView.gameObject);
     }
 }
