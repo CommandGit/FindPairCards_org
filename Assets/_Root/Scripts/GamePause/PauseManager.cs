@@ -1,4 +1,3 @@
-using UnityEngine;
 
 internal sealed class PauseManager : BaseEnabled, IUpdate
 {
@@ -21,8 +20,15 @@ internal sealed class PauseManager : BaseEnabled, IUpdate
         _pauseButtonController = new PauseButtonController();
         OnPauseEnable.AddHandler(_pauseButtonController.Hide);
         OnPauseDisable.AddHandler(_pauseButtonController.Show);
-        _pauseButtonController.OnButtonClicked.AddHandler(_pauseController.Change);
+        _pauseButtonController.OnButtonClicked.AddHandler(OnPauseButtonPressed);
 
+    }
+
+    private void OnPauseButtonPressed()
+    {
+        if (!_enable) return;
+
+        _pauseController.Change();
     }
 
     public void Update(float deltaTime)
