@@ -15,10 +15,10 @@ internal sealed class Menu
         OnStartGame.AddHandler(mainMenuController.OnStartGame);
 
         SettingsPanelController settingsPanelController = new SettingsPanelController();
-        //_updateController.Add(settingsPanelController);
-        //OnStartGame.AddHandler(settingsPanelController.OnStartGame);
         mainMenuController.OnSettingPressed.AddHandler(settingsPanelController.ShowSettings);
 
+        ThemePanelController themePanelController = new ThemePanelController();
+        mainMenuController.OnThemePanelPressed.AddHandler(themePanelController.ShowThemePanel);
 
         OnStartGame.Handle();
 

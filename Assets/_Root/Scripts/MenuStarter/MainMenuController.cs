@@ -5,6 +5,8 @@ using UnityEngine.SceneManagement;
 internal sealed class MainMenuController:BaseEnabled
 {
     public EventHandler OnSettingPressed = new EventHandler();
+    public EventHandler OnThemePanelPressed = new EventHandler();
+
 
     private GameObject _mainMenuPrefab;
     private GameObject _settingsPanelPrefab;
@@ -14,7 +16,6 @@ internal sealed class MainMenuController:BaseEnabled
     public MainMenuController()
     {
         _mainMenuPrefab = Resources.Load<GameObject>("Prefabs/UI/Menu");
-        _settingsPanelModelSettings = Resources.Load<SettingsPanelModelSettings>("ScriptableObject/SettingsPanelModelSettings");
     }
     public void OnStartGame()
     {
@@ -35,12 +36,11 @@ internal sealed class MainMenuController:BaseEnabled
     }
     private void ShowSettingsEnabled()
     {
-        //_settingsPanelModelSettings.IsEnable = true;
         OnSettingPressed.Handle();
     }
     private void ShowThemePanelEnabled()
     {
-        Debug.Log("ShowThemePanelEnabled");
+        OnThemePanelPressed.Handle();
     }
     private void ExitApplication()
     {
