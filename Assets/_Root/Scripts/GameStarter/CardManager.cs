@@ -1,82 +1,67 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 
 internal sealed class CardManager
 {
-    public EventHandler BeforeCardsPrevievStart;
-    public EventHandler AfterCardsPrevievComplete;
-    public EventHandler<int> OnCardsCountChanged;
-    public EventHandler OnFirstCardClicked;
+    public EventHandler OnReadyToPlay = new EventHandler();
+    public EventHandler<int> OnCardsCountChanged = new EventHandler<int>();
+    public EventHandler OnFirstCardClicked = new EventHandler();
 
-    private EventHandler _onStartGame;
-    private EventHandler<ScreenData> _onScreenDataChanged;
+    private CardsInfo _cardsInfo;
+    private CardsDestroyController _cardsDestroyController ;
+    private CardsInstantiator _cardsInstantiator;
+    private CardsClickController _cardsClickController;
+    private CardRotateStartController _cardRotateStartController;
+    private CheckPairController _checkPairController;
+    private CardsRotateCompleteController _cardsRotateCompleteController;
+    private PreviewCardsController _previewCardsController;
+    private CardsCountController _cardsCountController;
+    private InverseCardController _inverseCardController;
+    private FirstCardClickEventController _firstCardClickEventController;
 
     public CardManager(UpdateController updateController)
     {
-        BeforeCardsPrevievStart = new EventHandler();
-        AfterCardsPrevievComplete = new EventHandler();
-        OnCardsCountChanged = new EventHandler<int>();
-        OnFirstCardClicked = new EventHandler();
+        _cardsInfo = new CardsInfo(16);
+        _cardsDestroyController = new CardsDestroyController();
+        _cardsInstantiator = new CardsInstantiator(_cardsInfo, updateController);
+        _cardsClickController = new CardsClickController();
+        _cardRotateStartController = new CardRotateStartController();
+        _checkPairController = new CheckPairController();
+        _cardsRotateCompleteController = new CardsRotateCompleteController(updateController);
+        _previewCardsController = new PreviewCardsController(updateController, _cardsInfo);
+        _cardsCountController = new CardsCountController();
+        _inverseCardController = new InverseCardController();
+        _firstCardClickEventController = new FirstCardClickEventController();
 
-        _onStartGame = new EventHandler();
-        _onScreenDataChanged = new EventHandler<ScreenData>();
-
-        CardsInfo cardsInfo = new CardsInfo(16);
-        _onScreenDataChanged.AddHandler(cardsInfo.OnScreenDataChanged);
-        
-        CardsDestroyController cardsDestroyController = new CardsDestroyController();
-        cardsDestroyController.OnDestroy.AddHandler(cardsInfo.RemoveCard);
-
-        CardsInstantiator cardsInstantiator = new CardsInstantiator(cardsInfo, updateController);
-        _onStartGame.AddHandler(cardsInstantiator.InstantiateCards);
-        cardsInstantiator.OnCardInstantiated.AddHandler(cardsDestroyController.OnCardInstantiated);
-
-        CardsClickController cardsClickController = new CardsClickController();
-        cardsInstantiator.OnCardInstantiated.AddHandler(cardsClickController.OnCardInstantiated);
-
-        CardRotateStartController cardRotateStartController = new CardRotateStartController();
-        cardsClickController.OnCardClick.AddHandler(cardRotateStartController.OnCardClick);
-
-        CheckPairController checkPairController = new CheckPairController();
-        checkPairController.TrueCardFinded.AddHandler(cardsDestroyController.DestroyCard);
-        checkPairController.FalseCardFinded.AddHandler(cardRotateStartController.StartRotate);
-
-        CardsRotateCompleteController cardsRotateCompleteController = new CardsRotateCompleteController(updateController);
-        cardsInstantiator.OnCardInstantiated.AddHandler(cardsRotateCompleteController.OnCardInstantiated);
-
-        PreviewCardsController previewCardsController = new PreviewCardsController(updateController, cardsInfo);
-        _onScreenDataChanged.AddHandler(previewCardsController.OnScreenDataChanged);
-        previewCardsController.BeforeStart.AddHandler(checkPairController.Disable);
-        previewCardsController.BeforeStart.AddHandler(BeforeCardsPrevievStart.Handle);
-        previewCardsController.OnComplete.AddHandler(checkPairController.Enable);
-        previewCardsController.OnComplete.AddHandler(AfterCardsPrevievComplete.Handle);
-        updateController.Add(previewCardsController);
-        _onStartGame.AddHandler(previewCardsController.Start);
-
-        CardsCountController cardsCountController = new CardsCountController();
-        cardsInstantiator.OnCardInstantiated.AddHandler(cardsCountController.OnCardInstantiated);
-        cardsDestroyController.OnDestroy.AddHandler(cardsCountController.OnCardDestroyed);
-        cardsCountController.OnCardsCountChanged.AddHandler(OnCardsCountChanged.Handle);
-
-        InverseCardController inverseCardController = new InverseCardController();
-        cardsDestroyController.OnDestroy.AddHandler(inverseCardController.OnDestroyCard);
-        cardRotateStartController.OnCardRotateStarted.AddHandler(inverseCardController.OnCardRotateStarted);
-        cardsRotateCompleteController.OnCardRotateComplete.AddHandler(inverseCardController.OnCardRotateComplete);
-        inverseCardController.OnPairFinded.AddHandler(checkPairController.OnPairFinded);
-
-        FirstCardClickEventController firstCardClickEventController = new FirstCardClickEventController();
-        cardsClickController.OnCardClick.AddHandler(firstCardClickEventController.OnCardClick);
-        firstCardClickEventController.OnFirstCardClicked.AddHandler(OnFirstCardClicked.Handle);
+        updateController.Add(_previewCardsController);
+        _cardsDestroyController.OnDestroy.AddHandler(_cardsInfo.RemoveCard);
+        _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsDestroyController.OnCardInstantiated);
+        _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsClickController.OnCardInstantiated);
+        _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsRotateCompleteController.OnCardInstantiated);
+        _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsCountController.OnCardInstantiated);
+        _cardsClickController.OnCardClick.AddHandler(_cardRotateStartController.OnCardClick);
+        _cardsClickController.OnCardClick.AddHandler(_firstCardClickEventController.OnCardClick);
+        _checkPairController.TrueCardFinded.AddHandler(_cardsDestroyController.DestroyCard);
+        _checkPairController.FalseCardFinded.AddHandler(_cardRotateStartController.StartRotate);
+        _previewCardsController.BeforeStart.AddHandler(_checkPairController.Disable);
+        _previewCardsController.OnComplete.AddHandler(_checkPairController.Enable);
+        _previewCardsController.OnComplete.AddHandler(OnReadyToPlay.Handle);
+        _cardsDestroyController.OnDestroy.AddHandler(_cardsCountController.OnCardDestroyed);
+        _cardsDestroyController.OnDestroy.AddHandler(_inverseCardController.OnDestroyCard);
+        _cardsCountController.OnCardsCountChanged.AddHandler(OnCardsCountChanged.Handle);
+        _cardRotateStartController.OnCardRotateStarted.AddHandler(_inverseCardController.OnCardRotateStarted);
+        _cardsRotateCompleteController.OnCardRotateComplete.AddHandler(_inverseCardController.OnCardRotateComplete);
+        _inverseCardController.OnPairFinded.AddHandler(_checkPairController.OnPairFinded);
+        _firstCardClickEventController.OnFirstCardClicked.AddHandler(OnFirstCardClicked.Handle);
     }
 
-    public void OnStartGame()
+    public void OnStartScene()
     {
-        _onStartGame.Handle();
+        _cardsInstantiator.InstantiateCards();
+        _previewCardsController.Start();
     }
 
     public void OnScreenDataChanged(ScreenData screenData)
     {
-        _onScreenDataChanged.Handle(screenData);
+        _cardsInfo.OnScreenDataChanged(screenData);
+        _previewCardsController.OnScreenDataChanged(screenData);
     }
 }

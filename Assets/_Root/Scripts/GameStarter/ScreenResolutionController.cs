@@ -16,7 +16,7 @@ internal sealed class ScreenResolutionController : IUpdate
         OnSreenResolutionChanged = new EventHandler<int, int>();
     }
 
-    public void OnStartGame()
+    public void OnStartScene()
     {
         ChangeScreenParams(Screen.width, Screen.height);
     }

@@ -38,16 +38,21 @@ internal sealed class PauseManager : BaseEnabled, IUpdate
         _pauseKeyController.Update();
     }
 
-    public void OnStartGame()
+    public override void Enable()
     {
-        Enable();
+        base.Enable();
         _pauseButtonController.Show();
+    }
+
+    public override void Disable()
+    {
+        base.Disable();
+        _pauseButtonController.Hide();
     }
 
     public void OnWinGame()
     {
         _pauseController.Set(false);
         Disable();
-        _pauseButtonController.Hide();
     }
 }
