@@ -8,12 +8,12 @@ internal class BaseEnabled
         _enable = false;
     }
 
-    public void Enable()
+    public virtual void Enable()
     {
         _enable = true;
     }
 
-    public void Disable()
+    public virtual void Disable()
     {
         _enable = false;
     }

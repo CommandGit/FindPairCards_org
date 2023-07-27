@@ -31,7 +31,9 @@ internal sealed class Game
         PauseManager pauseManager = new PauseManager();
         _updateController.Add(pauseManager);
         OnStartGame.AddHandler(pauseManager.OnStartGame);
+        OnStartGame.AddHandler(pauseManager.Disable);
         winGameController.OnWinGame.AddHandler(pauseManager.OnWinGame);
+        cardManager.AfterCardsPrevievComplete.AddHandler(pauseManager.Enable);
 
         WinGameUIInstantiator winGameUIInstantiator = new WinGameUIInstantiator();
         winGameController.OnWinGame.AddHandler(winGameUIInstantiator.Instantiate);
