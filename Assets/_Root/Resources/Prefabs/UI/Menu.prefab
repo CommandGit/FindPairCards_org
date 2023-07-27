@@ -1038,9 +1038,21 @@ PrefabInstance:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
-      propertyPath: m_fontSize
-      value: 43.15
+      propertyPath: m_text
+      value: "\u041D\u041E\u0412\u0410\u042F \u0418\u0413\u0420\u0410\n"
       objectReference: {fileID: 0}
+    - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_fontSize
+      value: 43
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f99b7b6d043f1734f8f67f29581f47e5, type: 2}
+    - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3283310798512220141, guid: f99b7b6d043f1734f8f67f29581f47e5, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
 --- !u!114 &5378784315323834243 stripped

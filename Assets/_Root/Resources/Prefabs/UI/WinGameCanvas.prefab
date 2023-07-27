@@ -698,6 +698,42 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_text
+      value: "\u0413\u043B\u0430\u0432\u043D\u043E\u0435 \u043C\u0435\u043D\u044E"
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_fontSize
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: e1d15feb448ea494ca3349d5df142a02, type: 2}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_isRightToLeft
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -8433627543763066768, guid: e1d15feb448ea494ca3349d5df142a02, type: 2}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_charWidthMaxAdj
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_TextStyleHashCode
+      value: -1183493901
+      objectReference: {fileID: 0}
     - target: {fileID: 8319850591796379053, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
       propertyPath: m_Name
       value: MainMenuButton
@@ -806,7 +842,23 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_fontSize
-      value: 57.55
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: f99b7b6d043f1734f8f67f29581f47e5, type: 2}
+    - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: -3283310798512220141, guid: f99b7b6d043f1734f8f67f29581f47e5, type: 2}
+    - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
