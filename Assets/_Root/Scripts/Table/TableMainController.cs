@@ -14,7 +14,7 @@ internal sealed class TableMainController
         _tableZonePosition = null;
     }
 
-    public void OnStartGame()
+    public void OnStartScene()
     {
         Show();
     }
