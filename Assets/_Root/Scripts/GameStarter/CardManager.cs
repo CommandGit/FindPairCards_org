@@ -6,7 +6,7 @@ internal sealed class CardManager
     public EventHandler OnFirstCardClicked = new EventHandler();
 
     private CardsInfo _cardsInfo;
-    private CardsDestroyController _cardsDestroyController ;
+    private CardsDestroyController _cardsDestroyController;
     private CardsInstantiator _cardsInstantiator;
     private CardsClickController _cardsClickController;
     private CardRotateStartController _cardRotateStartController;
@@ -17,9 +17,9 @@ internal sealed class CardManager
     private InverseCardController _inverseCardController;
     private FirstCardClickEventController _firstCardClickEventController;
 
-    public CardManager(UpdateController updateController)
+    public CardManager(UpdateController updateController, LevelSettings levelSettings)
     {
-        _cardsInfo = new CardsInfo(16);
+        _cardsInfo = new CardsInfo(levelSettings.LevelNumber);
         _cardsDestroyController = new CardsDestroyController();
         _cardsInstantiator = new CardsInstantiator(_cardsInfo, updateController);
         _cardsClickController = new CardsClickController();

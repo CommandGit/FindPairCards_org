@@ -11,6 +11,7 @@ internal sealed class Game
         EventHandler OnStartScene = new EventHandler();
 
         SettingsController settingsController = new SettingsController();
+        Settings settings = settingsController.GetSettings();
 
         TableMainController tableMainController = new TableMainController();
         OnStartScene.AddHandler(tableMainController.OnStartScene);
@@ -23,7 +24,7 @@ internal sealed class Game
         screenResolutionController.OnSreenResolutionChanged.AddHandler(screenDataController.OnScreenResolutionChanged);
         screenDataController.OnScreenDataChanged.AddHandler(tableMainController.OnScreenDataChanged);
 
-        CardManager cardManager = new CardManager(_updateController);
+        CardManager cardManager = new CardManager(_updateController, settings.LevelSettings);
         OnStartScene.AddHandler(cardManager.OnStartScene);
         screenDataController.OnScreenDataChanged.AddHandler(cardManager.OnScreenDataChanged);
 

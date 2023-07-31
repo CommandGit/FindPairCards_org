@@ -12,8 +12,9 @@ internal sealed class CardsInfo
     public Card[] Cards;
     public int CardsCountOnField;
 
-    public CardsInfo(int cardsCount)
+    public CardsInfo(int levelNumber)
     {
+        int cardsCount = GetCardsCountFromLevelNumber(levelNumber);
         CardsCountOnField = 0;
         CardsCount = cardsCount;
         Cards = new Card[cardsCount];
@@ -23,6 +24,11 @@ internal sealed class CardsInfo
         }
 
         SetRandomPair();
+    }
+
+    private int GetCardsCountFromLevelNumber(int levelNumber)
+    {
+        return 2 + (2 * levelNumber);
     }
 
     public void RemoveCard(Card card, CardView cardView)

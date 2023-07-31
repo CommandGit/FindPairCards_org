@@ -23,7 +23,7 @@ internal sealed class LevelSettings
 
     private void SetDefaultValues()
     {
-        LevelNumber = 9;
+        LevelNumber = 7; //testing default value
     }
 }
 
