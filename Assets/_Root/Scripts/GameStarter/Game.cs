@@ -10,6 +10,8 @@ internal sealed class Game
 
         EventHandler OnStartScene = new EventHandler();
 
+        SettingsController settingsController = new SettingsController();
+
         TableMainController tableMainController = new TableMainController();
         OnStartScene.AddHandler(tableMainController.OnStartScene);
 
