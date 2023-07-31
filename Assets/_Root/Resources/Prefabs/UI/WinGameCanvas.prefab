@@ -190,7 +190,7 @@ GameObject:
   - component: {fileID: 9108951318330253505}
   - component: {fileID: 2598973176442311118}
   m_Layer: 5
-  m_Name: WinLabel
+  m_Name: WinLabelText
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -246,8 +246,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: "\u041F\u041E\u0411\u0415\u0414\u0410"
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 9102180302060284289711884ef62443, type: 2}
+  m_sharedMaterial: {fileID: 6499398318812396432, guid: 9102180302060284289711884ef62443, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -698,6 +698,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1806262649345809447, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_fontAsset
+      value: 
+      objectReference: {fileID: 11400000, guid: 9102180302060284289711884ef62443, type: 2}
+    - target: {fileID: 1806262649345809447, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
+      propertyPath: m_sharedMaterial
+      value: 
+      objectReference: {fileID: 6499398318812396432, guid: 9102180302060284289711884ef62443, type: 2}
     - target: {fileID: 4252523305813645122, guid: 5f966505769a1b6429d8cdd2ec7ff888, type: 3}
       propertyPath: m_text
       value: "\u0413\u043B\u0430\u0432\u043D\u043E\u0435 \u043C\u0435\u043D\u044E"
@@ -847,7 +855,7 @@ PrefabInstance:
     - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_fontAsset
       value: 
-      objectReference: {fileID: 11400000, guid: f99b7b6d043f1734f8f67f29581f47e5, type: 2}
+      objectReference: {fileID: 11400000, guid: 9102180302060284289711884ef62443, type: 2}
     - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_fontSizeMax
       value: 50
@@ -855,7 +863,7 @@ PrefabInstance:
     - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_sharedMaterial
       value: 
-      objectReference: {fileID: -3283310798512220141, guid: f99b7b6d043f1734f8f67f29581f47e5, type: 2}
+      objectReference: {fileID: 6499398318812396432, guid: 9102180302060284289711884ef62443, type: 2}
     - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_enableAutoSizing
       value: 1
