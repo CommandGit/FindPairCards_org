@@ -6,7 +6,7 @@ internal sealed class ThemePanelController
     private GameObject _themePanelPrefab;
     public ThemePanelController()
     {
-        _themePanelPrefab = Resources.Load<GameObject>("Prefabs/UI/ThemePanel");
+        _themePanelPrefab = Resources.Load<GameObject>("Prefabs/UI/ThemePanelCanvas");
         _themePanelView = GameObject.FindObjectOfType<ThemePanelView>();
     }
     public void ShowThemePanel()

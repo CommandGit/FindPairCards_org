@@ -2,10 +2,11 @@ using System;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
-internal sealed class MainMenuController:BaseEnabled
+internal sealed class MainMenuController
 {
     public EventHandler OnSettingPressed = new EventHandler();
     public EventHandler OnThemePanelPressed = new EventHandler();
+    public EventHandler OnNewGameButtonPressed = new EventHandler();
 
 
     private GameObject _mainMenuPrefab;
@@ -32,7 +33,7 @@ internal sealed class MainMenuController:BaseEnabled
     }
     private void StartNewGame()
     {
-        SceneManager.LoadScene(1);
+        OnNewGameButtonPressed.Handle();
     }
     private void ShowSettingsEnabled()
     {
@@ -41,6 +42,10 @@ internal sealed class MainMenuController:BaseEnabled
     private void ShowThemePanelEnabled()
     {
         OnThemePanelPressed.Handle();
+    }
+    private void LoadLevelMenuPanel()
+    {
+        OnNewGameButtonPressed.Handle();
     }
     private void ExitApplication()
     {
