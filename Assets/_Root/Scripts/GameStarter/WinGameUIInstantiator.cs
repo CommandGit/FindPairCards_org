@@ -1,10 +1,11 @@
 using UnityEngine;
 
-internal sealed class WinGameUIInstantiator
+internal sealed class WinGameUIInstantiator:Instantiate
 {
+    private const string PREFAB_PATH = "Prefabs/UI/WinGameCanvas";
+
     public void Instantiate()
     {
-        GameObject prefab = Resources.Load<GameObject>("Prefabs/UI/WinGameCanvas");
-        GameObject.Instantiate(prefab);
+       InstantiateObject(PREFAB_PATH);
     }
 }

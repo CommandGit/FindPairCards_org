@@ -32,4 +32,6 @@ internal class BasePrefabInstantiator
         _isShown = false;
         _gameObject = null;
     }
+    
+
 }

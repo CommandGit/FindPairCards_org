@@ -6,3 +6,4 @@ internal sealed class PauseMenu : BasePrefabInstantiator
 
     }
 }
+ 
