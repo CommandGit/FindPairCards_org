@@ -60,6 +60,9 @@ internal sealed class Game
         pauseManager.OnPauseEnable.AddHandler(pauseMenu.Show);
         pauseManager.OnPauseDisable.AddHandler(pauseMenu.Hide);
 
+        SoundManager soundManager = new SoundManager();
+        cardManager.OnCardRotateStarted.AddHandler(soundManager.OnCardRotateStarted);
+
         OnStartScene.Handle();
     }
 
