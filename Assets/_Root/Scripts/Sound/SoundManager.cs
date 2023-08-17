@@ -10,7 +10,9 @@ internal sealed class SoundManager
 
     public void OnCardRotateStarted(Card card, CardView cardView)
     {
-        _soundController.PlayOnParent("Sound/Rotate", cardView.transform);
-        //_soundController.Play("Sound/Rotate");
+        if (card.TargetYAngle == 180f)
+            _soundController.PlayOnParent("Sound/RotateCardFaceUp", 1f, cardView.transform);
+        else
+            _soundController.PlayOnParent("Sound/RotateCardFaceDown", 1f, cardView.transform);
     }
 }

@@ -8,7 +8,7 @@ internal sealed class SoundController
         _soundFX3DPrefab = Resources.Load<GameObject>("Prefabs/Sound/SoundFX3D");
     }
 
-    public GameObject PlayOnParent(string audioSourcePath, Transform parent)
+    public GameObject PlayOnParent(string audioSourcePath, float volume, Transform parent)
     {
         GameObject go = GameObject.Instantiate(_soundFX3DPrefab, parent);
         SoundFX3DView soundFX3DView = go.GetComponent<SoundFX3DView>();
@@ -16,6 +16,7 @@ internal sealed class SoundController
 
         AudioClip audioClip = Resources.Load<AudioClip>(audioSourcePath);
         audioSource.clip = audioClip;
+        audioSource.volume = volume;
         audioSource.Play();
 
         GameObject.Destroy(go, audioClip.length + 1);
