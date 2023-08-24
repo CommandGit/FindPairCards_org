@@ -7,8 +7,8 @@ internal sealed class Menu
 
     public void Start()
     {
-        _updateController = new UpdateController();
         EventHandler OnStartGame = new EventHandler();
+        _updateController = new UpdateController();
 
         MainMenuController mainMenuController = new MainMenuController();
         
@@ -19,6 +19,9 @@ internal sealed class Menu
 
         ThemePanelController themePanelController = new ThemePanelController();
         mainMenuController.OnThemePanelPressed.AddHandler(themePanelController.ShowThemePanel);
+
+        LevelMenuController levelMenuController = new LevelMenuController();
+        mainMenuController.OnNewGameButtonPressed.AddHandler(levelMenuController.ShowLevelMenu);
 
         OnStartGame.Handle();
 
