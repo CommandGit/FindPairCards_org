@@ -26,6 +26,7 @@ internal sealed class SettingsController: Instantiate//BasePrefabInstantiator //
         GameObject go = InstantiateObject(PREFAB_PATH);
         _settingsView = go.GetComponent<SettingsView>();
         _settingsView.Settings = new Settings();
+        GameObject.DontDestroyOnLoad(go);
     }
 
     public Settings GetSettings()

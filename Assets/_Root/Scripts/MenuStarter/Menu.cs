@@ -10,6 +10,9 @@ internal sealed class Menu
         EventHandler OnStartGame = new EventHandler();
         _updateController = new UpdateController();
 
+        SettingsController settingsController = new SettingsController();
+        Settings settings = settingsController.GetSettings();
+
         MainMenuController mainMenuController = new MainMenuController();
         
         OnStartGame.AddHandler(mainMenuController.OnStartGame);
@@ -22,6 +25,9 @@ internal sealed class Menu
 
         LevelMenuController levelMenuController = new LevelMenuController();
         mainMenuController.OnNewGameButtonPressed.AddHandler(levelMenuController.ShowLevelMenu);
+
+        LevelLoader levelLoader = new LevelLoader(settings);
+        levelMenuController.LevelButtonPressed.AddHandler(levelLoader.LoadLevel);
 
         OnStartGame.Handle();
 

@@ -6,7 +6,7 @@ using UnityEngine;
         public virtual GameObject InstantiateObject(string path)
     {
         GameObject prefab = Resources.Load<GameObject>(path);
-        GameObject.Instantiate(prefab);
-        return prefab;
+        GameObject gameObject = GameObject.Instantiate(prefab);
+        return gameObject;
     }
     }
