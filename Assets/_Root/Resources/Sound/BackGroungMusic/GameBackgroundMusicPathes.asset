@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52418d1976a3bc144ad07c0425496d42, type: 3}
+  m_Name: GameBackgroundMusicPathes
+  m_EditorClassIdentifier: 
+  Collection:
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB1
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB2
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB3
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB4
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB5
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB6
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB7
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB8
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB9
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB10
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB11
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB12
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB13
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB14
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB15
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB16
+  - Sound/BackGroungMusic/GameBackgroundMusic/GB17

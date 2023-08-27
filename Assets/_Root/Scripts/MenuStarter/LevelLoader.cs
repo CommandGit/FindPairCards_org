@@ -1,9 +1,6 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
 using UnityEngine.SceneManagement;
 
-internal sealed class LevelLoader : MonoBehaviour
+internal sealed class LevelLoader
 {
     private Settings _settings;
 

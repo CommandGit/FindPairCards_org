@@ -29,6 +29,10 @@ internal sealed class Menu
         LevelLoader levelLoader = new LevelLoader(settings);
         levelMenuController.LevelButtonPressed.AddHandler(levelLoader.LoadLevel);
 
+        BackgroundMusicController backgroundMusicController = new BackgroundMusicController();
+        _updateController.Add(backgroundMusicController);
+        OnStartGame.AddHandler(backgroundMusicController.PlayMenuBackgroundRandom);
+
         OnStartGame.Handle();
 
     }

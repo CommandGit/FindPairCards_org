@@ -1,4 +1,7 @@
 
+using Extension;
+using UnityEngine;
+
 internal sealed class SoundManager
 {
     private SoundController _soundController;
