@@ -17,7 +17,7 @@ internal sealed class CardsInstantiator
         _updateController = updateController;
     }
 
-    public void InstantiateCards()
+    public void InstantiateCards(EventHandler<Card, CardView> OnEndMoveHandler)
     {
         foreach (Card card in _cardsInfo.Cards)
         {
@@ -35,6 +35,10 @@ internal sealed class CardsInstantiator
 
             CardRotateController cardRotateController = new CardRotateController(card, cardView);
             _updateController.AddToView(cardRotateController, cardView);
+
+            CardEndMoveEventController cardEndMoveEventController = new CardEndMoveEventController(card, cardView);
+            _updateController.AddToView(cardEndMoveEventController, cardView);
+            cardEndMoveEventController.OnEndMove.AddHandler(OnEndMoveHandler.Handle);
 
             OnCardInstantiated.Handle(card, cardView);
         }

@@ -1,7 +1,4 @@
 
-using Extension;
-using UnityEngine;
-
 internal sealed class SoundManager
 {
     private SoundController _soundController;
@@ -17,5 +14,10 @@ internal sealed class SoundManager
             _soundController.PlayOnParent("Sound/RotateCardFaceUp", 1f, cardView.transform);
         else
             _soundController.PlayOnParent("Sound/RotateCardFaceDown", 1f, cardView.transform);
+    }
+
+    public void OnCardEndMove(Card card, CardView cardView)
+    {
+        _soundController.PlayOnParent("Sound/DropCard", 0.2f, cardView.transform);
     }
 }

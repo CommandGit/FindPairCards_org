@@ -39,6 +39,16 @@ internal sealed class PreviewCardsController : IUpdate
     public void Start()
     {
         BeforeStart.Handle();
+        StartWait();
+    }
+
+    private void StartWait()
+    {
+        new Timer(_updateController, 1f, OnEndStartWait);
+    }
+
+    public void OnEndStartWait()
+    {
         Start(180f, CardsPreviewStarted);
     }
 

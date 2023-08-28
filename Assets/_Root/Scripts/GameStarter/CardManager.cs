@@ -5,6 +5,7 @@ internal sealed class CardManager
     public EventHandler<int> OnCardsCountChanged = new EventHandler<int>();
     public EventHandler OnFirstCardClicked = new EventHandler();
     public EventHandler<Card, CardView> OnCardRotateStarted = new EventHandler<Card, CardView>();
+    public EventHandler<Card, CardView> OnCardEndMove = new EventHandler<Card, CardView>();
 
     private CardsInfo _cardsInfo;
     private CardsDestroyController _cardsDestroyController;
@@ -57,7 +58,7 @@ internal sealed class CardManager
 
     public void OnStartScene()
     {
-        _cardsInstantiator.InstantiateCards();
+        _cardsInstantiator.InstantiateCards(OnCardEndMove);
         _previewCardsController.Start();
     }
 

@@ -132,7 +132,7 @@ internal sealed class CardsInfo
     {
         for (int i = 0; i < CardsCount; i++)
         {
-            if (Cards[i] != null) Cards[i].StartPosition = startPosition;
+            if (Cards[i] != null) Cards[i].StartPosition = startPosition + i * Vector3.left;
         }
     }
 
