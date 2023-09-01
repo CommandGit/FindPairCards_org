@@ -6,6 +6,8 @@ internal sealed class CardManager
     public EventHandler OnFirstCardClicked = new EventHandler();
     public EventHandler<Card, CardView> OnCardRotateStarted = new EventHandler<Card, CardView>();
     public EventHandler<Card, CardView> OnCardEndMove = new EventHandler<Card, CardView>();
+    public EventHandler OnStartOpenPreviewCards = new EventHandler();
+    public EventHandler OnStartClosePreviewCards = new EventHandler();
 
     private CardsInfo _cardsInfo;
     private CardsDestroyController _cardsDestroyController;
@@ -46,6 +48,8 @@ internal sealed class CardManager
         _previewCardsController.BeforeStart.AddHandler(_checkPairController.Disable);
         _previewCardsController.OnComplete.AddHandler(_checkPairController.Enable);
         _previewCardsController.OnComplete.AddHandler(OnReadyToPlay.Handle);
+        _previewCardsController.OnStartOpenPreviewCards.AddHandler(OnStartOpenPreviewCards.Handle);
+        _previewCardsController.OnStartClosePreviewCards.AddHandler(OnStartClosePreviewCards.Handle);
         _cardsDestroyController.OnDestroy.AddHandler(_cardsCountController.OnCardDestroyed);
         _cardsDestroyController.OnDestroy.AddHandler(_inverseCardController.OnDestroyCard);
         _cardsCountController.OnCardsCountChanged.AddHandler(OnCardsCountChanged.Handle);

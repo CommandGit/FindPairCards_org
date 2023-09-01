@@ -5,8 +5,10 @@ using UnityEngine;
 
 internal sealed class PreviewCardsController : IUpdate
 {
-    public EventHandler BeforeStart;
-    public EventHandler OnComplete;
+    public EventHandler BeforeStart = new EventHandler();
+    public EventHandler OnComplete = new EventHandler();
+    public EventHandler OnStartOpenPreviewCards = new EventHandler();
+    public EventHandler OnStartClosePreviewCards = new EventHandler();
 
     private Action _onComplete;
     private float _timer;
@@ -19,9 +21,6 @@ internal sealed class PreviewCardsController : IUpdate
 
     public PreviewCardsController(UpdateController updateController, CardsInfo cardsInfo)
     {
-        BeforeStart = new EventHandler();
-        OnComplete = new EventHandler();
-
         _timer = 0f;
         _enabled = false;
         _cardsInfo = cardsInfo;
@@ -50,6 +49,7 @@ internal sealed class PreviewCardsController : IUpdate
     public void OnEndStartWait()
     {
         Start(180f, CardsPreviewStarted);
+        OnStartOpenPreviewCards.Handle();
     }
 
     private void CardsPreviewStarted()
@@ -60,6 +60,7 @@ internal sealed class PreviewCardsController : IUpdate
     private void CardsPreviewEnded()
     {
         Start(0f, CardsPreviewCompleted);
+        OnStartClosePreviewCards.Handle();
     }
 
     private void CardsPreviewCompleted()

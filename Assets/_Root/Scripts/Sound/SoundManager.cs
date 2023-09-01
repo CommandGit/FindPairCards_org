@@ -20,4 +20,14 @@ internal sealed class SoundManager
     {
         _soundController.PlayOnParent("Sound/DropCard", 0.2f, cardView.transform);
     }
+
+    public void OnStartOpenPreviewCards()
+    {
+        _soundController.Play2D("Sound/PreviewCards/OpenCardPreview", 1f);
+    }
+
+    public void OnStartClosePreviewCards()
+    {
+        _soundController.Play2D("Sound/PreviewCards/CloseCardPreview", 1f);
+    }
 }
