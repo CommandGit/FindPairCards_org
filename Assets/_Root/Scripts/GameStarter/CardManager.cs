@@ -20,6 +20,8 @@ internal sealed class CardManager
     private CardsCountController _cardsCountController;
     private InverseCardController _inverseCardController;
     private FirstCardClickEventController _firstCardClickEventController;
+    private AllCardsTargetPositionController _allCardsTargetPositionController;
+    private NeedPreviewCardsChecker _needPreviewCardsChecker;
 
     public CardManager(UpdateController updateController, LevelSettings levelSettings)
     {
@@ -34,13 +36,18 @@ internal sealed class CardManager
         _cardsCountController = new CardsCountController();
         _inverseCardController = new InverseCardController();
         _firstCardClickEventController = new FirstCardClickEventController();
+        _allCardsTargetPositionController = new AllCardsTargetPositionController();
+        _needPreviewCardsChecker = new NeedPreviewCardsChecker(levelSettings);
 
         updateController.Add(_previewCardsController);
+        updateController.Add(_allCardsTargetPositionController);
+
         _cardsDestroyController.OnDestroy.AddHandler(_cardsInfo.RemoveCard);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsDestroyController.OnCardInstantiated);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsClickController.OnCardInstantiated);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsRotateCompleteController.OnCardInstantiated);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsCountController.OnCardInstantiated);
+        _cardsInstantiator.OnCardInstantiated.AddHandler(_allCardsTargetPositionController.OnCardInstantiated);
         _cardsClickController.OnCardClick.AddHandler(_cardRotateStartController.OnCardClick);
         _cardsClickController.OnCardClick.AddHandler(_firstCardClickEventController.OnCardClick);
         _checkPairController.TrueCardFinded.AddHandler(_cardsDestroyController.DestroyCard);
@@ -58,12 +65,18 @@ internal sealed class CardManager
         _cardsRotateCompleteController.OnCardRotateComplete.AddHandler(_inverseCardController.OnCardRotateComplete);
         _inverseCardController.OnPairFinded.AddHandler(_checkPairController.OnPairFinded);
         _firstCardClickEventController.OnFirstCardClicked.AddHandler(OnFirstCardClicked.Handle);
+        _allCardsTargetPositionController.OnAllCardsOnTarget.AddHandler(_allCardsTargetPositionController.Disable);
+        _allCardsTargetPositionController.OnAllCardsOnTarget.AddHandler(_needPreviewCardsChecker.Check);
+        _needPreviewCardsChecker.OnNeedPreview.AddHandler(_previewCardsController.Start);
+        _needPreviewCardsChecker.OnNoNeedPreview.AddHandler(_checkPairController.Enable);
+        _needPreviewCardsChecker.OnNoNeedPreview.AddHandler(OnReadyToPlay.Handle);
     }
 
     public void OnStartScene()
     {
         _cardsInstantiator.InstantiateCards(OnCardEndMove);
-        _previewCardsController.Start();
+        //_previewCardsController.Start();
+        _allCardsTargetPositionController.Enable();
     }
 
     public void OnScreenDataChanged(ScreenData screenData)

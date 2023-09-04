@@ -65,6 +65,7 @@ internal sealed class PreviewCardsController : IUpdate
 
     private void CardsPreviewCompleted()
     {
+        _enabled = false;
         OnComplete.Handle();
     }
 
