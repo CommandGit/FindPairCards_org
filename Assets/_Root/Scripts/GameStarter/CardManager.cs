@@ -5,6 +5,9 @@ internal sealed class CardManager
     public EventHandler<int> OnCardsCountChanged = new EventHandler<int>();
     public EventHandler OnFirstCardClicked = new EventHandler();
     public EventHandler<Card, CardView> OnCardRotateStarted = new EventHandler<Card, CardView>();
+    public EventHandler<Card, CardView> OnCardEndMove = new EventHandler<Card, CardView>();
+    public EventHandler OnStartOpenPreviewCards = new EventHandler();
+    public EventHandler OnStartClosePreviewCards = new EventHandler();
 
     private CardsInfo _cardsInfo;
     private CardsDestroyController _cardsDestroyController;
@@ -17,6 +20,8 @@ internal sealed class CardManager
     private CardsCountController _cardsCountController;
     private InverseCardController _inverseCardController;
     private FirstCardClickEventController _firstCardClickEventController;
+    private AllCardsTargetPositionController _allCardsTargetPositionController;
+    private NeedPreviewCardsChecker _needPreviewCardsChecker;
 
     public CardManager(UpdateController updateController, LevelSettings levelSettings)
     {
@@ -31,13 +36,18 @@ internal sealed class CardManager
         _cardsCountController = new CardsCountController();
         _inverseCardController = new InverseCardController();
         _firstCardClickEventController = new FirstCardClickEventController();
+        _allCardsTargetPositionController = new AllCardsTargetPositionController();
+        _needPreviewCardsChecker = new NeedPreviewCardsChecker(levelSettings);
 
         updateController.Add(_previewCardsController);
+        updateController.Add(_allCardsTargetPositionController);
+
         _cardsDestroyController.OnDestroy.AddHandler(_cardsInfo.RemoveCard);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsDestroyController.OnCardInstantiated);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsClickController.OnCardInstantiated);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsRotateCompleteController.OnCardInstantiated);
         _cardsInstantiator.OnCardInstantiated.AddHandler(_cardsCountController.OnCardInstantiated);
+        _cardsInstantiator.OnCardInstantiated.AddHandler(_allCardsTargetPositionController.OnCardInstantiated);
         _cardsClickController.OnCardClick.AddHandler(_cardRotateStartController.OnCardClick);
         _cardsClickController.OnCardClick.AddHandler(_firstCardClickEventController.OnCardClick);
         _checkPairController.TrueCardFinded.AddHandler(_cardsDestroyController.DestroyCard);
@@ -45,6 +55,8 @@ internal sealed class CardManager
         _previewCardsController.BeforeStart.AddHandler(_checkPairController.Disable);
         _previewCardsController.OnComplete.AddHandler(_checkPairController.Enable);
         _previewCardsController.OnComplete.AddHandler(OnReadyToPlay.Handle);
+        _previewCardsController.OnStartOpenPreviewCards.AddHandler(OnStartOpenPreviewCards.Handle);
+        _previewCardsController.OnStartClosePreviewCards.AddHandler(OnStartClosePreviewCards.Handle);
         _cardsDestroyController.OnDestroy.AddHandler(_cardsCountController.OnCardDestroyed);
         _cardsDestroyController.OnDestroy.AddHandler(_inverseCardController.OnDestroyCard);
         _cardsCountController.OnCardsCountChanged.AddHandler(OnCardsCountChanged.Handle);
@@ -53,12 +65,18 @@ internal sealed class CardManager
         _cardsRotateCompleteController.OnCardRotateComplete.AddHandler(_inverseCardController.OnCardRotateComplete);
         _inverseCardController.OnPairFinded.AddHandler(_checkPairController.OnPairFinded);
         _firstCardClickEventController.OnFirstCardClicked.AddHandler(OnFirstCardClicked.Handle);
+        _allCardsTargetPositionController.OnAllCardsOnTarget.AddHandler(_allCardsTargetPositionController.Disable);
+        _allCardsTargetPositionController.OnAllCardsOnTarget.AddHandler(_needPreviewCardsChecker.Check);
+        _needPreviewCardsChecker.OnNeedPreview.AddHandler(_previewCardsController.Start);
+        _needPreviewCardsChecker.OnNoNeedPreview.AddHandler(_checkPairController.Enable);
+        _needPreviewCardsChecker.OnNoNeedPreview.AddHandler(OnReadyToPlay.Handle);
     }
 
     public void OnStartScene()
     {
-        _cardsInstantiator.InstantiateCards();
-        _previewCardsController.Start();
+        _cardsInstantiator.InstantiateCards(OnCardEndMove);
+        //_previewCardsController.Start();
+        _allCardsTargetPositionController.Enable();
     }
 
     public void OnScreenDataChanged(ScreenData screenData)

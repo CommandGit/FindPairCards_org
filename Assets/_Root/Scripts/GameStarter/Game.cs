@@ -62,6 +62,9 @@ internal sealed class Game
 
         SoundManager soundManager = new SoundManager();
         cardManager.OnCardRotateStarted.AddHandler(soundManager.OnCardRotateStarted);
+        cardManager.OnCardEndMove.AddHandler(soundManager.OnCardEndMove);
+        cardManager.OnStartOpenPreviewCards.AddHandler(soundManager.OnStartOpenPreviewCards);
+        cardManager.OnStartClosePreviewCards.AddHandler(soundManager.OnStartClosePreviewCards);
 
         BackgroundMusicController backgroundMusicController = new BackgroundMusicController();
         _updateController.Add(backgroundMusicController);

@@ -15,6 +15,7 @@ internal sealed class GameSettings
 internal sealed class LevelSettings
 {
     public int LevelNumber;
+    public bool PreviewCards;
 
     public LevelSettings()
     {
@@ -24,6 +25,7 @@ internal sealed class LevelSettings
     private void SetDefaultValues()
     {
         LevelNumber = 7; //testing default value
+        PreviewCards = true; //testing default value
     }
 }
 
