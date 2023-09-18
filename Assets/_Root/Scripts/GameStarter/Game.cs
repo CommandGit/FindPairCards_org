@@ -56,7 +56,7 @@ internal sealed class Game
         pauseManager.OnPauseEnable.AddHandler(stopWatchController.Stop);
         pauseManager.OnPauseDisable.AddHandler(stopWatchController.Start);
 
-        PauseMenu pauseMenu = new PauseMenu();
+        PauseMenuController pauseMenu = new PauseMenuController();
         pauseManager.OnPauseEnable.AddHandler(pauseMenu.Show);
         pauseManager.OnPauseDisable.AddHandler(pauseMenu.Hide);
 
