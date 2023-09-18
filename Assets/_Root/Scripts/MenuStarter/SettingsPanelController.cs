@@ -6,7 +6,7 @@ internal sealed class SettingsPanelController
     private GameObject _settingsPanelPrefab;
     public SettingsPanelController()
     {
-        _settingsPanelPrefab = Resources.Load<GameObject>("Prefabs/UI/SettingsPanel");
+        _settingsPanelPrefab = Resources.Load<GameObject>("Prefabs/UI/SettingsMenu");
         _settingsPanelView = GameObject.FindObjectOfType<SettingsPanelView>();
     }
     public void ShowSettings()
