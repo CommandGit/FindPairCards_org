@@ -7,6 +7,7 @@ internal sealed class Menu
 
     public void Start()
     {
+        EventHandler OnStartScene = new EventHandler();
         EventHandler OnStartGame = new EventHandler();
         _updateController = new UpdateController();
 
@@ -17,7 +18,7 @@ internal sealed class Menu
         
         OnStartGame.AddHandler(mainMenuController.OnStartGame);
 
-        SettingsPanelController settingsPanelController = new SettingsPanelController();
+        SettingsPanelController settingsPanelController = new SettingsPanelController(settings);
         mainMenuController.OnSettingPressed.AddHandler(settingsPanelController.ShowSettings);
 
         ThemePanelController themePanelController = new ThemePanelController();
@@ -33,6 +34,14 @@ internal sealed class Menu
         _updateController.Add(backgroundMusicController);
         OnStartGame.AddHandler(backgroundMusicController.PlayMenuBackgroundRandom);
 
+        SettingsChangeController settingsChangeController = new SettingsChangeController(settings);
+        settingsPanelController.OnChangeSettings.AddHandler(settingsChangeController.OnSettingsChanged);
+        OnStartScene.AddHandler(settingsChangeController.OnStartScene);
+
+        AudioMixerController audioMixerController = new AudioMixerController();
+        settingsChangeController.OnSoundSettingsChanged.AddHandler(audioMixerController.OnChangeSettings);
+
+        OnStartScene.Handle();
         OnStartGame.Handle();
 
     }

@@ -117,6 +117,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   settingsPanelObject: {fileID: 296893226639376848}
   closeSettingsPanelButton: {fileID: 4135478607621585702}
+  MasterVolumeSlider: {fileID: 7412978591075628401}
+  SubmitButton: {fileID: 7291406834871280669}
 --- !u!1 &593492897406635034
 GameObject:
   m_ObjectHideFlags: 0

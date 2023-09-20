@@ -70,6 +70,12 @@ internal sealed class Game
         _updateController.Add(backgroundMusicController);
         OnStartScene.AddHandler(backgroundMusicController.PlayGameBackgroundRandom);
 
+        SettingsChangeController settingsChangeController = new SettingsChangeController(settings);
+        OnStartScene.AddHandler(settingsChangeController.OnStartScene);
+
+        AudioMixerController audioMixerController = new AudioMixerController();
+        settingsChangeController.OnSoundSettingsChanged.AddHandler(audioMixerController.OnChangeSettings);
+
         OnStartScene.Handle();
     }
 

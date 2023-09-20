@@ -35,6 +35,17 @@ internal sealed class PlaySettings
 
 internal sealed class SoundSettings
 {
+    public float MasterVolume;
+
+    public SoundSettings()
+    {
+        SetDefaultValues();
+    }
+
+    private void SetDefaultValues()
+    {
+        MasterVolume = 0f; //testing default value
+    }
 }
 
 internal sealed class DesignSettings
