@@ -468,6 +468,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ExitButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5067417012507235074, guid: 31f458f7b922f8b41a87e661e5b102fa, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5067417012507235074, guid: 31f458f7b922f8b41a87e661e5b102fa, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b04aa24eb51ead8488ce6ced05678e35, type: 3}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 31f458f7b922f8b41a87e661e5b102fa, type: 3}
 --- !u!224 &75927431601448747 stripped
@@ -603,6 +611,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: SettingsButton
       objectReference: {fileID: 0}
+    - target: {fileID: 2190584195100338754, guid: 0e146f74533b68444a203fe6ae414c76, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2190584195100338754, guid: 0e146f74533b68444a203fe6ae414c76, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b04aa24eb51ead8488ce6ced05678e35, type: 3}
     - target: {fileID: 6625642537862727387, guid: 0e146f74533b68444a203fe6ae414c76, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -720,6 +736,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: ThemeButton
       objectReference: {fileID: 0}
+    - target: {fileID: 5791666663765333896, guid: 7b56b12a534b8654bbdc68db7f7296e6, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5791666663765333896, guid: 7b56b12a534b8654bbdc68db7f7296e6, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b04aa24eb51ead8488ce6ced05678e35, type: 3}
     - target: {fileID: 9000427112516559185, guid: 7b56b12a534b8654bbdc68db7f7296e6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -867,7 +891,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1026610709435275111, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 87.944
       objectReference: {fileID: 0}
     - target: {fileID: 1026610709435275111, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_LocalPosition.x
@@ -917,6 +941,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4476366868844434398, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_Type
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 4476366868844434398, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: b04aa24eb51ead8488ce6ced05678e35, type: 3}
     - target: {fileID: 8077147292167571000, guid: 33e51ea854cf1af459045f2f91e7e58c, type: 3}
       propertyPath: m_fontSize
       value: 39.5
